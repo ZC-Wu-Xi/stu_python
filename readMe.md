@@ -872,15 +872,17 @@ print(a is not b)  # True
 
 ## 4. 条件判断
 
+![第4章 条件判断](./MDImg/第4章 条件判断.svg)
+
 ### 4-1 单分支选择结构
 
 格式：
 
-- ```python
-  if	判断条件:
-      条件成立时要做的事
-      ...
-  ```
+```python
+if	判断条件:
+    条件成立时要做的事
+    ...
+```
 
 案例：
 
@@ -897,5 +899,190 @@ print('hello')
 
 ```shell
 hello
+```
+
+### 4-2 双分支选择结构
+
+格式：
+
+```python
+if 判断条件:
+    条件成立时要做的事
+    ...
+else:
+    条件不成立时要做的事
+    ...
+```
+
+案例：
+
+```
+weather = '下雨'
+if weather == '下雨':
+    print('带伞')
+    print(111)
+else:
+    print('不带伞')
+```
+
+控制台：
+
+```shell
+带伞
+111
+```
+
+### 4-3 多分枝选择结构
+
+格式：
+
+```python
+if 条件1:
+    条件1成立时要做的事
+    ...
+elif 条件2:
+    条件2成立时要做的事
+    ...
+elif 条件3:
+    条件3成立时要做的事
+    ...   
+else:
+    都不满足时要做的事
+```
+
+案例：
+
+```python
+score = 98
+# 多分支写法
+if score >= 90:
+    print("优秀")
+elif score >= 80:
+    print("良好")
+elif score >= 70:
+    print("中等")
+elif score >= 60:
+    print("及格")
+else:
+    print("不及格")
+```
+
+控制台：
+
+```shell
+优秀
+```
+
+### 4-4 `if`的嵌套
+
+> - 在开发中，使用`if`进行条件判断，如果希望在条件成立的执行语句中再增加条件判断，就可以使用`if`的嵌套
+> - `if`的嵌套的应用场景就是：在之前条件满足的前提下，再增加额外的判断
+> - `if`的嵌套的语法格式，除了缩进之外和之前的没有区别
+
+案例：
+
+```python
+# 双分支写法
+if score >= 90:
+    print("A")
+else:
+    if score >= 80:
+        print("B")
+    else:
+        if score >= 70:
+            print("C")
+        else:
+            if score >= 60:
+                print("D")
+            else:
+                print("E")
+```
+
+控制台：
+
+```shell
+E
+```
+
+### 4-5 `match`语句
+
+> - Python中的match语句是Python3.10及以后版本中引入的新特性，用于模式匹配。
+> - 它允许你根据对象的模式来检查对象，并执行相应的代码块
+
+**格式**：
+
+```python
+x = ?
+match x:
+    case y:
+        ...
+    case z:
+        ...
+    case a:
+        ...
+    case _:  # 匹配所有其它值
+        ...
+```
+
+>- `match`语句中的每个代码块由一个或多个`case`子句组成
+>- 每个`case`子句后面跟着一个模式和一个代码块
+>- 当模式匹配成功时，会执行相应的代码块
+>- 如果没有任何模式匹配成功，则可以选择使用一个默认的代码块，使用下划线`_`来表示。
+
+案例：
+
+```python
+x = 4;
+match x:
+    case 1:
+        print("x is 1")
+    case 2:
+        print("x is 2")
+    case 3 | 4:
+        print("x is 3 or 4")
+    case _:
+        print("x is something else")
+        
+x = 'hello'
+match x:
+    case 'hello':
+        print("x is hello")
+    case 'world':
+        print("x is world")
+    case _:
+        print("x is something else")
+```
+
+控制台：
+
+```shell
+x is 3 or 4
+x is hello
+```
+
+**if:**
+
+- `if`语句是最基本的条件控制结构，用于基于条件测试执行不同的代码块。
+- `if`语句在处理简单条件和分支时非常有用。
+- 你可以使用`elif（else if)`来添加额外的条件分支。
+- `if`语句不支持模式匹配，只能基于**布尔表达式**进行条件判断。
+
+**match:**
+
+- match语句是Python3.10及以后版本引入的新特性，主要用于模式匹配。
+- matchi语句允许你根据对象的模式结构来检查对象，并根据匹配的模式执行相应的代码块。
+- match语句特别适用于处理复杂的数据结构，如元组、列表、字典等，以及自定义类的实例
+- 它通过模式匹配提供了更简洁、更直观的方式来处理复杂的条件逻辑。
+
+### 4-6 案例：闰年判断
+
+闰年判断：
+
+```python
+year = int(input("请输入一个年份："))
+if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
+    print(1)
+else:
+    print(0)
 ```
 
